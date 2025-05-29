@@ -15,7 +15,32 @@ class HomeDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: MyTheme.creamColor,
+
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child:
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceBetween,
+              buttonPadding: EdgeInsets.zero,
+              children: [
+                "\$${catalog.price}".text.bold.xl4.red800.make(),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      MyTheme.darkBluishColor,
+                    ),
+                    foregroundColor: MaterialStateProperty.all(Colors.white),
+
+                    shape: MaterialStateProperty.all(StadiumBorder()),
+                  ),
+                  child: "Buy".text.make(),
+                ).wh(100, 50),
+              ],
+            ).p16(),
+      ),
       body: SafeArea(
+        bottom: false,
         child: Column(
           children: [
             Hero(
@@ -26,11 +51,28 @@ class HomeDetailPage extends StatelessWidget {
 
             Expanded(
               child: VxArc(
-                height: 30.0,
+                height: 15.0,
                 arcType: VxArcType.convey,
                 edge: VxEdge.top,
 
-                child: Container(color: Colors.red),
+                child: Container(
+                  color: Colors.white,
+                  width: context.screenWidth,
+                  child:
+                      Column(
+                        children: [
+                          catalog.name.text.xl4
+                              .color(MyTheme.darkBluishColor)
+                              .bold
+                              .make(),
+                          catalog.desc.text
+                              .textStyle(context.captionStyle)
+                              .xl
+                              .make(),
+                          10.heightBox,
+                        ],
+                      ).py64(),
+                ),
               ),
             ),
           ],
