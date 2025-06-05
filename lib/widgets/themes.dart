@@ -48,6 +48,6 @@ class MyTheme {
 
   static Color creamColor = const Color(0xfff5f5f5);
   static Color darkcreamColor = Colors.grey.shade900;
-  static Color darkBluishColor = const Color(0xff403b58);
-  static Color lightBluishColor = Colors.indigo.shade500;
+  static Color darkBluishColor = const Color.fromARGB(255, 58, 24, 226);
+  static Color lightBluishColor = const Color(0xFF5066E7);
 }
