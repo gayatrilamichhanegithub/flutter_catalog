@@ -46,8 +46,13 @@ class MyTheme {
     ),
   );
 
-  static Color creamColor = const Color(0xfff5f5f5);
-  static Color darkcreamColor = Colors.grey.shade900;
-  static Color darkBluishColor = const Color.fromARGB(255, 58, 24, 226);
-  static Color lightBluishColor = const Color(0xFF5066E7);
+  static Color creamColor = const Color.from(
+    alpha: 1,
+    red: 0.961,
+    green: 0.961,
+    blue: 0.961,
+  );
+  static Color darkcreamColor = const Color.fromARGB(255, 3, 47, 158);
+  static Color darkBluishColor = const Color.fromRGBO(44, 8, 220, 0.944);
+  static Color lightBluishColor = const Color.fromARGB(241, 6, 39, 231);
 }
