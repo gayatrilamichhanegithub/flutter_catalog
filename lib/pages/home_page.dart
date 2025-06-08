@@ -2,11 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
+import 'package:velocity_x/velocity_x.dart';
+
+import 'package:flutter_catalog/core/store.dart';
 import 'package:flutter_catalog/models/catalog.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_list.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,9 +17,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final int days = 30;
-  final String name = "Codepur";
-
   @override
   void initState() {
     super.initState();
@@ -41,18 +41,24 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.canvasColor,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: context.theme.colorScheme.primary,
-        child: Icon(
-          CupertinoIcons.cart,
-          color: const Color.from(
-            alpha: 1,
-            red: 0.953,
-            green: 0.933,
-            blue: 0.933,
-          ),
-        ),
+      floatingActionButton: VxBuilder(
+        mutations: {AddMutation, RemoveMutation},
+        builder: (context, store, status) {
+          final _cart = (VxState.store as MyStore).cart;
+          return FloatingActionButton(
+            onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+            backgroundColor: context.theme.colorScheme.primary,
+            child: Icon(CupertinoIcons.cart, color: Colors.white),
+          ).badge(
+            color: Vx.red500,
+            size: 22,
+            count: _cart.items.length,
+            textStyle: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        },
       ),
       body: SafeArea(
         child: Container(
@@ -64,7 +70,7 @@ class _HomePageState extends State<HomePage> {
               if (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
                 CatalogList().py16().expand()
               else
-                CircularProgressIndicator().centered().expand(),
+                const CircularProgressIndicator().centered().expand(),
             ],
           ),
         ),
