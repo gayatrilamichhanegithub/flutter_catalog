@@ -1,16 +1,25 @@
-# flutter_catalog
+# Flutter Catalog App
 
-A new Flutter project.
+A responsive and modern shopping catalog application built using **Flutter**. This project demonstrates my ability to build clean, scalable, and responsive UI applications with basic state handling, custom widgets, and cross-platform support for both **Android, iOS, and Web**.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+##  Features
 
-A few resources to get you started if this is your first Flutter project:
+- Product catalog with detailed view
+- Add-to-cart functionality with dynamic updates
+- Clean and responsive Material UI
+- Lightweight state management for cart operations
+- Compatible with Web and Mobile
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##  Technologies Used
+
+- **Flutter**
+- **Dart**
+- **Material Design**
+- **Local JSON Data**
+ 
+ 
+
